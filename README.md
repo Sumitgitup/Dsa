@@ -1,8 +1,10 @@
 # DSA Cohort 2026
 
-## 📂 Sessions & Resources
+## 📂 Sessions, Resources & Solutions
 
 All session-specific materials are organized under the **`sessions/`** directory.
+
+All the session-specific solutions are organized under the **`solutions`** directory.
 
 Each session file contains the relevant resources for that session, including:
 
