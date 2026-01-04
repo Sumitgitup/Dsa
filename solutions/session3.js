@@ -69,21 +69,37 @@
 
 // Question: https://leetcode.com/problems/find-pivot-index/description/
 
-const nums = [1,7,3,6,5,6];
+// const nums = [1,7,3,6,5,6];
 
-function pivotIndex(nums) {
-    const totalSum = nums.reduce((sum, n) => sum + n, 0);
-    let leftSum = 0
-    for (let i = 0; i < nums.length; i++) {
-        let rightSum = totalSum - leftSum  - nums[i];
-        console.log("For " + [i] + "th " + "rightSum: " + rightSum);
-        if (leftSum === rightSum) {
-            return i;
-        }
-        leftSum += nums[i]
-        console.log("For " + [i] + "th " + "leftSum: " + leftSum);
+// function pivotIndex(nums) {
+//     const totalSum = nums.reduce((sum, n) => sum + n, 0);
+//     let leftSum = 0
+//     for (let i = 0; i < nums.length; i++) {
+//         let rightSum = totalSum - leftSum  - nums[i];
+//         if (leftSum === rightSum) {
+//             return i;
+//         }
+//         leftSum += nums[i]
+//     }
+//     return -1;
+// }
+
+// console.log(pivotIndex(nums));
+
+
+// Question: https://www.interviewbit.com/problems/arraybug/
+
+const A = [1, 2, 3, 4, 5, 6];
+const B = 2;
+
+
+function rotateArr(A, B) {
+    const result = [];
+    const n = A.length
+    for (let i = 0; i < n; i++) {
+        result[i] = A[(i + B) % n] ;
     }
-    return -1;
+    return result;
 }
 
-console.log(pivotIndex(nums));
+console.log(rotateArr(A, B));
