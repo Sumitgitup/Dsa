@@ -1,50 +1,85 @@
 
 // Question: https://leetcode.com/problems/plus-one/
 
-const digits = [9, 9, 9];
+// const digits = [9, 9, 9];
 
-function plusOne (digits) {
-    for (let i = digits.length - 1; i >= 0; i--) {
-        if (digits[i] < 9) {
-            digits[i]++;
-            return digits;
-        } else {
-            digits[i] = 0
-        }
-    }
-    return [1, ...digits];
-}
+// function plusOne (digits) {
+//     for (let i = digits.length - 1; i >= 0; i--) {
+//         if (digits[i] < 9) {
+//             digits[i]++;
+//             return digits;
+//         } else {
+//             digits[i] = 0
+//         }
+//     }
+//     return [1, ...digits];
+// }
 
-console.log(plusOne(digits));
+// console.log(plusOne(digits));
 
 // Question: https://www.geeksforgeeks.org/problems/rotate-array-by-n-elements-1587115621/1
 
-const arr = [1, 2, 3, 4, 5]
-const d = 2
+// const arr = [1, 2, 3, 4, 5]
+// const d = 2
 
-function rotateArr(arr, d) {
-    const n = arr.length;
-    d = d % n;
+// function rotateArr(arr, d) {
+//     const n = arr.length;
+//     d = d % n;
 
-    reverse(arr, 0, d-1);
-    reverse(arr, d, n-1);
-    reverse(arr, 0, n-1);
+//     reverse(arr, 0, d-1);
+//     reverse(arr, d, n-1);
+//     reverse(arr, 0, n-1);
 
-    function reverse(arr, l, r) {
-        while(l < r) {
-            let temp = arr[l];
-            arr[l] = arr[r];
-            arr[r] = temp
-            r--;
-            l++;
-        }
+//     function reverse(arr, l, r) {
+//         while(l < r) {
+//             let temp = arr[l];
+//             arr[l] = arr[r];
+//             arr[r] = temp
+//             r--;
+//             l++;
+//         }
        
+//     }
+//     return arr
+// }
+
+
+// console.log(rotateArr(arr, d));
+
+// Question: https://leetcode.com/problems/all-divisions-with-the-highest-score-of-a-binary-array/description/
+
+var maxScoreIndices = function(nums) {
+    const n = nums.length;
+    let leftZeroes = 0;
+    let rightOnes = 0;
+    for(const num of nums) {
+        if (num === 1) rightOnes++;
     }
-    return arr
-}
 
+    let maxScore = leftZeroes + rightOnes;
+    let resultIndices = [0];
+    
+    for (let i = 0; i < n; i++) {
+        const num = nums[i];
+        const splitIndex = i + 1;
 
-console.log(rotateArr(arr, d));
+        if ( num === 0) {
+            leftZeroes++
+        } else {
+            rightOnes--
+        }
+
+        let currentScore = leftZeroes + rightOnes;
+        if ( currentScore > maxScore) {
+            maxScore = currentScore;
+            resultIndices = [splitIndex];
+        } else if (currentScore === maxScore) {
+            resultIndices.push(splitIndex)
+        }
+
+    }
+    return resultIndices;
+};
 
 // Question: https://leetcode.com/problems/max-consecutive-ones/description/
 // Pre-requisite for session 5

@@ -111,3 +111,5 @@ var maxScoreIndices = function(nums) {
 };
 
 maxScoreIndices([0, 0, 1, 0]);
+
+
