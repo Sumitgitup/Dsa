@@ -48,60 +48,77 @@
 
 // Question: https://leetcode.com/problems/all-divisions-with-the-highest-score-of-a-binary-array/description/
 
-var maxScoreIndices = function(nums) {
-    const n = nums.length;
-    let leftZeroes = 0;
-    let rightOnes = 0;
-    for(const num of nums) {
-        if (num === 1) rightOnes++;
-    }
+// var maxScoreIndices = function(nums) {
+//     const n = nums.length;
+//     let leftZeroes = 0;
+//     let rightOnes = 0;
+//     for(const num of nums) {
+//         if (num === 1) rightOnes++;
+//     }
 
-    let maxScore = leftZeroes + rightOnes;
-    let resultIndices = [0];
+//     let maxScore = leftZeroes + rightOnes;
+//     let resultIndices = [0];
     
-    for (let i = 0; i < n; i++) {
-        const num = nums[i];
-        const splitIndex = i + 1;
+//     for (let i = 0; i < n; i++) {
+//         const num = nums[i];
+//         const splitIndex = i + 1;
 
-        if ( num === 0) {
-            leftZeroes++
-        } else {
-            rightOnes--
-        }
+//         if ( num === 0) {
+//             leftZeroes++
+//         } else {
+//             rightOnes--
+//         }
 
-        let currentScore = leftZeroes + rightOnes;
-        if ( currentScore > maxScore) {
-            maxScore = currentScore;
-            resultIndices = [splitIndex];
-        } else if (currentScore === maxScore) {
-            resultIndices.push(splitIndex)
-        }
+//         let currentScore = leftZeroes + rightOnes;
+//         if ( currentScore > maxScore) {
+//             maxScore = currentScore;
+//             resultIndices = [splitIndex];
+//         } else if (currentScore === maxScore) {
+//             resultIndices.push(splitIndex)
+//         }
 
+//     }
+//     return resultIndices;
+// };
+
+// Question: https://leetcode.com/problems/array-partition/description/
+
+const arr = [6,2,6,5,1,2];
+
+function arrayPairSum (nums) {
+    nums.sort((a, b) => a -b);
+
+    let sum = 0;
+    for (let i = 0; i < nums.length; i += 2) {
+        sum += nums[i];
     }
-    return resultIndices;
-};
+    return sum;
+    
+} 
+
+console.log(arrayPairSum(arr));
 
 // Question: https://leetcode.com/problems/max-consecutive-ones/description/
 // Pre-requisite for session 5
 
 // const nums = [1, 1, 0, 1, 1, 1, 1]
 
-function findMaxConsecutiveOnes(nums) {
-    const n = nums.length;
-    let count = 0;
-    let i = 0
-    let result = -Infinity
-    while (i < n) {
-        if (nums[i] === 0) {
-            count = 0;
-        } else {
-            count++;
-        }
-        result = Math.max(result, count);
-        i++;
-    }
+// function findMaxConsecutiveOnes(nums) {
+//     const n = nums.length;
+//     let count = 0;
+//     let i = 0
+//     let result = -Infinity
+//     while (i < n) {
+//         if (nums[i] === 0) {
+//             count = 0;
+//         } else {
+//             count++;
+//         }
+//         result = Math.max(result, count);
+//         i++;
+//     }
 
-    return result;
-}
+//     return result;
+// }
 
-console.log(findMaxConsecutiveOnes(nums));
+// console.log(findMaxConsecutiveOnes(nums));
