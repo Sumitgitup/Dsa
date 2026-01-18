@@ -59,57 +59,80 @@
 // console.log(twoSum([3, 2, 4], 6));
 
 
-var maxScoreIndices = function(nums) {
-    console.log("--- START DEBUGGING ---");
-    console.log("Input Array:", nums);
-    const n = nums.length;
-    let rightOnes = 0;
-    for (let num of nums) {
-        if (num === 1) rightOnes++;
-    }
-    let leftZeros = 0;
-    let maxScore = leftZeros + rightOnes;
-    let resultIndices = [0]; 
-    console.log(`\n[INIT] Split Index 0 (Start):`);
-    console.log(`   Left Zeros: ${leftZeros}, Right Ones: ${rightOnes}`);
-    console.log(`   Current Score: ${maxScore}`);
-    console.log(`   Max Score So Far: ${maxScore}`);
-    console.log(`   Result Indices: ${JSON.stringify(resultIndices)}`);
+// var maxScoreIndices = function(nums) {
+//     console.log("--- START DEBUGGING ---");
+//     console.log("Input Array:", nums);
+//     const n = nums.length;
+//     let rightOnes = 0;
+//     for (let num of nums) {
+//         if (num === 1) rightOnes++;
+//     }
+//     let leftZeros = 0;
+//     let maxScore = leftZeros + rightOnes;
+//     let resultIndices = [0]; 
+//     console.log(`\n[INIT] Split Index 0 (Start):`);
+//     console.log(`   Left Zeros: ${leftZeros}, Right Ones: ${rightOnes}`);
+//     console.log(`   Current Score: ${maxScore}`);
+//     console.log(`   Max Score So Far: ${maxScore}`);
+//     console.log(`   Result Indices: ${JSON.stringify(resultIndices)}`);
 
-    for (let i = 0; i < n; i++) {
-        const num = nums[i];
-        const splitIndex = i + 1;
+//     for (let i = 0; i < n; i++) {
+//         const num = nums[i];
+//         const splitIndex = i + 1;
 
-        console.log(`\n[STEP] processing index i=${i} (Value: ${num})`);
-        console.log(`   -> Moving wall to Split Index ${splitIndex}`);
-        if (num === 0) {
-            leftZeros++; 
-            console.log(`   -> Found a 0! Added to Left Zeros.`);
-        } else {
-            rightOnes--; 
-            console.log(`   -> Found a 1! Removed from Right Ones.`);
-        }
+//         console.log(`\n[STEP] processing index i=${i} (Value: ${num})`);
+//         console.log(`   -> Moving wall to Split Index ${splitIndex}`);
+//         if (num === 0) {
+//             leftZeros++; 
+//             console.log(`   -> Found a 0! Added to Left Zeros.`);
+//         } else {
+//             rightOnes--; 
+//             console.log(`   -> Found a 1! Removed from Right Ones.`);
+//         }
         
-        let currentScore = leftZeros + rightOnes;
-        console.log(`   -> New Counts | Left Zeros: ${leftZeros}, Right Ones: ${rightOnes}`);
-        console.log(`   -> Score at Split Index ${splitIndex}: ${currentScore}`);
+//         let currentScore = leftZeros + rightOnes;
+//         console.log(`   -> New Counts | Left Zeros: ${leftZeros}, Right Ones: ${rightOnes}`);
+//         console.log(`   -> Score at Split Index ${splitIndex}: ${currentScore}`);
 
-        if (currentScore > maxScore) {
-            console.log(`   *** NEW HIGH SCORE! Updating max from ${maxScore} to ${currentScore} ***`);
-            maxScore = currentScore;
-            resultIndices = [splitIndex]; // Reset list with new winner
-        } else if (currentScore === maxScore) {
-            console.log(`   *** TIE SCORE! Adding index ${splitIndex} to list ***`);
-            resultIndices.push(splitIndex); // Append to winners
-        } else {
-            console.log(`   (Score ${currentScore} is lower than max ${maxScore}, ignoring)`);
-        }
-    }
+//         if (currentScore > maxScore) {
+//             console.log(`   *** NEW HIGH SCORE! Updating max from ${maxScore} to ${currentScore} ***`);
+//             maxScore = currentScore;
+//             resultIndices = [splitIndex]; // Reset list with new winner
+//         } else if (currentScore === maxScore) {
+//             console.log(`   *** TIE SCORE! Adding index ${splitIndex} to list ***`);
+//             resultIndices.push(splitIndex); // Append to winners
+//         } else {
+//             console.log(`   (Score ${currentScore} is lower than max ${maxScore}, ignoring)`);
+//         }
+//     }
     
-    console.log("\n--- FINAL RESULT ---");
-    return resultIndices;
-};
+//     console.log("\n--- FINAL RESULT ---");
+//     return resultIndices;
+// };
 
-maxScoreIndices([0, 0, 1, 0]);
+// maxScoreIndices([0, 0, 1, 0]);
+
+// Sliding window with two pointer
+const arr = [0, 1, 0, 1, 1];
+function maxOneZeroFlip(arr) {
+    let left = 0;
+    let zeroCount = 0;
+    let maxLen = 0;
+
+    for (let right = 0; right < arr.length; right++) {
+        if (arr[right] === 0) {
+            zeroCount++;
+        }
+
+        while (zeroCount > 1) {
+            if (arr[left] === 0) zeroCount--;
+            left++;
+        }
+
+        maxLen = Math.max(maxLen, right - left + 1);
+    }
+
+    return maxLen;
+}
 
 
