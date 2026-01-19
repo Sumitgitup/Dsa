@@ -1,3 +1,6 @@
+
+// Question: https://leetcode.com/problems/all-divisions-with-the-highest-score-of-a-binary-array/description/
+
 // const arr = [1, 1];
 
 // function maxScoreIndices (arr) {
@@ -28,6 +31,9 @@
 // }
 
 // console.log(maxScoreIndices(arr));
+
+
+// Same question as all-divisions-with-the-highest-score-of-a-binary-array
 
 const s = "LRRLLR";
 
