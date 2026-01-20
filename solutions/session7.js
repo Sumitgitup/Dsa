@@ -139,7 +139,7 @@ var findErrorNums = function (nums) {
       missing = i + 1;
     }
   }
-
+  
   return [duplicate, missing];
 };
 
