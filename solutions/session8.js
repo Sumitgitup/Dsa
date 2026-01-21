@@ -22,7 +22,7 @@ const nums = [1, 1, 1, 2, 2, 3];
 // Question: https://www.geeksforgeeks.org/problems/intersection-of-two-sorted-array-1587115620/1
 
 const arr1 = [2, 3, 4, 6];
-const arr2 = [1, 3, 4, 4, 6, 8, 8, 9, 11, 12];
+const arr2 = [2, 4, 6, 7, 8];
 // Output: [2, 4]
 function intersection(arr1, arr2) {
   // code here
