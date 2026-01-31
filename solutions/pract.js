@@ -1,33 +1,33 @@
-// // const nums = [1,7,3,6,5,6]
+// const nums = [1,7,3,6,5,6]
 
-// // function pivotIndex(nums) {
-// //     const n = nums.length;
+// function pivotIndex(nums) {
+//     const n = nums.length;
 
-// //     for (let i = 0; i < n; i++) {
-// //         let leftSum = 0;
-// //         let rightSum = 0;
+//     for (let i = 0; i < n; i++) {
+//         let leftSum = 0;
+//         let rightSum = 0;
 
-// //         // calculate left sum
-// //         for (let j = 0; j < i; j++) {
-// //             leftSum += nums[j];
-// //             console.log("leftSum: " + leftSum);
-// //         }
+//         // calculate left sum
+//         for (let j = 0; j < i; j++) {
+//             leftSum += nums[j];
+//             console.log("leftSum: " + leftSum);
+//         }
 
-// //         // calculate right sum
-// //         for (let j = i + 1; j < n; j++) {
-// //             rightSum += nums[j];
-// //             console.log("Rightsum: " + rightSum);
-// //         }
+//         // calculate right sum
+//         for (let j = i + 1; j < n; j++) {
+//             rightSum += nums[j];
+//             console.log("Rightsum: " + rightSum);
+//         }
 
-// //         if (leftSum === rightSum) {
-// //             return i;
-// //         }
-// //     }
+//         if (leftSum === rightSum) {
+//             return i;
+//         }
+//     }
 
-// //     return -1;
-// // }
+//     return -1;
+// }
 
-// // console.log(pivotIndex(nums));
+// console.log(pivotIndex(nums));
 
 // const arr = [10, 4, 8, 3];
 
@@ -113,26 +113,52 @@
 // maxScoreIndices([0, 0, 1, 0]);
 
 // Sliding window with two pointer
-const arr = [0, 1, 0, 1, 1];
-function maxOneZeroFlip(arr) {
-    let left = 0;
-    let zeroCount = 0;
-    let maxLen = 0;
+// const arr = [0, 1, 0, 1, 1];
+// function maxOneZeroFlip(arr) {
+//     let left = 0;
+//     let zeroCount = 0;
+//     let maxLen = 0;
 
-    for (let right = 0; right < arr.length; right++) {
-        if (arr[right] === 0) {
-            zeroCount++;
-        }
+//     for (let right = 0; right < arr.length; right++) {
+//         if (arr[right] === 0) {
+//             zeroCount++;
+//         }
 
-        while (zeroCount > 1) {
-            if (arr[left] === 0) zeroCount--;
-            left++;
-        }
+//         while (zeroCount > 1) {
+//             if (arr[left] === 0) zeroCount--;
+//             left++;
+//         }
 
-        maxLen = Math.max(maxLen, right - left + 1);
-    }
+//         maxLen = Math.max(maxLen, right - left + 1);
+//     }
 
-    return maxLen;
-}
+//     return maxLen;
+// }
+
+
+// const arr = [1, 0, 0, 1, 0, 1, 0, 1];
+
+// function maxOnes(arr, k) {
+//     let maxLen = 0;
+//     let zeros = 0;
+//     let left = 0;
+//     for (let right = 0; right < arr.length; right++) {
+//         if (arr[right] === 0) {
+//             zeros++
+//         } 
+//         while (zeros > k) {
+//             if (arr[left] === 0) {
+//                 zeros--
+//             }
+//             left++
+//         }
+//         maxLen = Math.max(maxLen, right - left + 1)
+//     }
+//     return maxLen;
+// }
+
+// console.log(maxOnes(arr, 2));
+
+
 
 
